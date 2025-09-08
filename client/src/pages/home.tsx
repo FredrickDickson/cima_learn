@@ -8,19 +8,20 @@ import CourseCard from "@/components/course-card";
 import { useAuth } from "@/hooks/useAuth";
 import { Link } from "wouter";
 import { ArrowRight, BookOpen, Clock, Trophy, Users, Star, TrendingUp, Award } from "lucide-react";
+import type { Course, Enrollment, ProgressOverview } from "@/types/api";
 
 export default function Home() {
   const { user } = useAuth();
   
-  const { data: featuredCourses = [], isLoading: coursesLoading } = useQuery({
+  const { data: featuredCourses = [], isLoading: coursesLoading } = useQuery<Course[]>({
     queryKey: ['/api/courses/featured'],
   });
 
-  const { data: enrollments = [], isLoading: enrollmentsLoading } = useQuery({
+  const { data: enrollments = [], isLoading: enrollmentsLoading } = useQuery<Enrollment[]>({
     queryKey: ['/api/enrollments'],
   });
 
-  const { data: progressOverview } = useQuery({
+  const { data: progressOverview } = useQuery<ProgressOverview>({
     queryKey: ['/api/progress/overview'],
   });
 
