@@ -167,8 +167,9 @@ cima-learn/
 - ✅ Responsive design
 
 ### **Upcoming Features**
+- 🔄 Supabase Integration
+- 🔄 Convert the CIMA learn to a cross platform application (Flutter)
 - 🔄 Advanced video streaming integration
-- 🔄 Mobile application (React Native)
 - 🔄 Offline course access
 - 🔄 Advanced analytics dashboard
 - 🔄 Multi-language support
