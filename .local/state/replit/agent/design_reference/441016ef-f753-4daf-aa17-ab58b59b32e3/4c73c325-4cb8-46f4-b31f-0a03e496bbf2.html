@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIMA - Center for International Mediators and Arbitrators | Global Learning Platform</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    popover: {
+                        DEFAULT: "var(--popover)",
+                        foreground: "var(--popover-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    destructive: {
+                        DEFAULT: "var(--destructive)",
+                        foreground: "var(--destructive-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                    chart: {
+                        "1": "var(--chart-1)",
+                        "2": "var(--chart-2)",
+                        "3": "var(--chart-3)",
+                        "4": "var(--chart-4)",
+                        "5": "var(--chart-5)",
+                    }
+                },
+                fontFamily: {
+                    sans: ["var(--font-sans)"],
+                    serif: ["var(--font-serif)"],
+                    mono: ["var(--font-mono)"],
+                }
+            },
+        }
+    };
+    </script>
+    
+    <style>
+        :root {
+            --background: hsl(210 40% 96%);
+            --foreground: hsl(222 84% 5%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(222 84% 5%);
+            --popover: hsl(0 0% 100%);
+            --popover-foreground: hsl(222 84% 5%);
+            --primary: hsl(220 91% 32%);
+            --primary-foreground: hsl(210 40% 98%);
+            --secondary: hsl(215 16% 47%);
+            --secondary-foreground: hsl(210 40% 98%);
+            --muted: hsl(210 40% 96%);
+            --muted-foreground: hsl(215 16% 47%);
+            --accent: hsl(38 92% 50%);
+            --accent-foreground: hsl(222 84% 5%);
+            --destructive: hsl(0 84% 60%);
+            --destructive-foreground: hsl(210 40% 98%);
+            --border: hsl(214 32% 91%);
+            --input: hsl(214 32% 91%);
+            --ring: hsl(220 91% 32%);
+            --radius: 0.5rem;
+            --font-sans: 'Inter', sans-serif;
+            --font-serif: 'Georgia', serif;
+            --font-mono: 'Fira Code', monospace;
+            --chart-1: hsl(220 91% 32%);
+            --chart-2: hsl(38 92% 50%);
+            --chart-3: hsl(160 60% 45%);
+            --chart-4: hsl(30 80% 55%);
+            --chart-5: hsl(280 65% 60%);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-foreground font-sans antialiased">
+    <!-- @COMPONENT: Header [Global navigation with user role-based menu] -->
+    <header class="bg-card border-b border-border sticky top-0 z-50 backdrop-blur-sm bg-card/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-balance-scale text-primary-foreground text-lg"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-primary">CIMA</h1>
+                            <p class="text-xs text-muted-foreground -mt-1">International ADR</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-foreground hover:text-primary transition-colors font-medium">Courses</a>
+                    <a href="#" class="text-muted-foreground hover:text-primary transition-colors">Programs</a>
+                    <a href="#" class="text-muted-foreground hover:text-primary transition-colors">Certification</a>
+                    <a href="#" class="text-muted-foreground hover:text-primary transition-colors">Resources</a>
+                    <a href="#" class="text-muted-foreground hover:text-primary transition-colors">Community</a>
+                </nav>
+
+                <!-- User Actions -->
+                <div class="flex items-center space-x-4">
+                    <!-- Language Selector -->
+                    <div class="hidden sm:flex items-center space-x-2 text-sm">
+                        <i class="fas fa-globe text-muted-foreground"></i>
+                        <select class="bg-transparent border-none text-muted-foreground focus:outline-none cursor-pointer">
+                            <option>EN</option>
+                            <option>ES</option>
+                            <option>FR</option>
+                            <option>DE</option>
+                        </select>
+                    </div>
+                    
+                    <button class="text-muted-foreground hover:text-primary transition-colors">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    
+                    <!-- User Profile Dropdown -->
+                    <div class="flex items-center space-x-2 cursor-pointer">
+                        <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                            <span class="text-accent-foreground text-sm font-medium">JD</span>
+                        </div>
+                        <i class="fas fa-chevron-down text-muted-foreground text-xs"></i>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-muted-foreground">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <!-- @COMPONENT: Hero Section [Main value proposition and CTA] -->
+    <section class="bg-gradient-to-br from-primary via-primary to-blue-900 text-primary-foreground">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <h1 class="text-4xl lg:text-5xl font-bold leading-tight">
+                            Master International 
+                            <span class="text-accent">Arbitration & Mediation</span>
+                        </h1>
+                        <p class="text-xl text-blue-100 leading-relaxed">
+                            Join the global community of ADR professionals. Advance your career with internationally recognized qualifications from the Center for International Mediators and Arbitrators.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-accent text-accent-foreground px-8 py-4 rounded-lg font-semibold hover:bg-yellow-500 transition-colors">
+                            Explore Programs
+                        </button>
+                        <button class="border border-blue-300 text-blue-100 px-8 py-4 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+                            <i class="fas fa-play mr-2"></i>
+                            Watch Overview
+                        </button>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-8 pt-8 border-t border-blue-400">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-accent">5,000+</div>
+                            <div class="text-sm text-blue-200">Global Members</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-accent">95%</div>
+                            <div class="text-sm text-blue-200">Success Rate</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-accent">50+</div>
+                            <div class="text-sm text-blue-200">Countries</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <!-- Professional meeting scene with international arbitration context -->
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Professional arbitration meeting" 
+                         class="rounded-xl shadow-2xl" />
+                    <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-xl"></div>
+                    
+                    <!-- Floating Achievement Card -->
+                    <div class="absolute -bottom-6 -left-6 bg-card p-4 rounded-lg shadow-xl border border-border">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-accent rounded-lg flex items-center justify-center">
+                                <i class="fas fa-certificate text-accent-foreground"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-foreground">FCIMArb Qualified</div>
+                                <div class="text-sm text-muted-foreground">International Recognition</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Hero Section -->
+
+    <!-- @COMPONENT: Featured Programs [Highlight key offerings] -->
+    <section class="py-20 bg-muted/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-foreground">Featured Programs</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Accelerate your career with our internationally recognized qualification programs designed for aspiring ADR professionals.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Global M&A Program -->
+                <div class="bg-card rounded-xl shadow-lg border border-border overflow-hidden group hover:shadow-xl transition-shadow">
+                    <!-- Modern business meeting focused on M&A negotiations -->
+                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" 
+                         alt="M&A arbitration and mediation training" 
+                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                    
+                    <div class="p-8">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-foreground mb-2">Global M&A Program</h3>
+                                <p class="text-sm text-accent font-medium">International Arbitration & Mediation</p>
+                            </div>
+                            <div class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">
+                                Featured
+                            </div>
+                        </div>
+                        
+                        <p class="text-muted-foreground mb-6">
+                            An expedited route for career development in international M&A dispute resolution. Master complex cross-border transactions and disputes.
+                        </p>
+
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-clock text-primary"></i>
+                                <span class="text-sm text-muted-foreground">12 weeks intensive</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-globe text-primary"></i>
+                                <span class="text-sm text-muted-foreground">International faculty</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-certificate text-primary"></i>
+                                <span class="text-sm text-muted-foreground">Professional certification</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="text-2xl font-bold text-foreground">$2,950</div>
+                                <div class="text-sm text-muted-foreground">USD</div>
+                            </div>
+                            <button class="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-blue-800 transition-colors">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FCIMArb Fellowship -->
+                <div class="bg-card rounded-xl shadow-lg border border-border overflow-hidden group hover:shadow-xl transition-shadow">
+                    <!-- Professional legal library or study environment -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" 
+                         alt="FCIMArb Fellowship professional development" 
+                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                    
+                    <div class="p-8">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-foreground mb-2">FCIMArb Fellowship</h3>
+                                <p class="text-sm text-accent font-medium">Professional Qualification</p>
+                            </div>
+                            <div class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">
+                                Premium
+                            </div>
+                        </div>
+                        
+                        <p class="text-muted-foreground mb-6">
+                            Internationally recognized and respected qualification upon program completion. Join an elite community of certified arbitrators and mediators.
+                        </p>
+
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-award text-accent"></i>
+                                <span class="text-sm text-muted-foreground">Fellow designation</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-users text-accent"></i>
+                                <span class="text-sm text-muted-foreground">Global network access</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-infinity text-accent"></i>
+                                <span class="text-sm text-muted-foreground">Lifetime membership</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="text-2xl font-bold text-foreground">$4,750</div>
+                                <div class="text-sm text-muted-foreground">USD</div>
+                            </div>
+                            <button class="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-medium hover:bg-yellow-500 transition-colors">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Featured Programs -->
+
+    <!-- @COMPONENT: Course Catalog [Browse available courses] -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12">
+                <div class="space-y-4 mb-8 lg:mb-0">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-foreground">Course Catalog</h2>
+                    <p class="text-xl text-muted-foreground">Comprehensive ADR training for all experience levels</p>
+                </div>
+
+                <!-- Filter and Search -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="relative">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground"></i>
+                        <input type="text" 
+                               placeholder="Search courses..." 
+                               class="pl-10 pr-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring w-full sm:w-64" />
+                    </div>
+                    <select class="px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring">
+                        <option>All Categories</option>
+                        <option>Mediation</option>
+                        <option>Arbitration</option>
+                        <option>M&A</option>
+                        <option>International Law</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Course Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course 1: Fundamentals of Mediation -->
+                <div class="bg-card rounded-xl shadow-lg border border-border overflow-hidden group hover:shadow-xl transition-shadow">
+                    <!-- Mediation session in progress -->
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300" 
+                         alt="Fundamentals of mediation training" 
+                         class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" />
+                    
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-secondary/10 text-secondary px-2 py-1 rounded text-xs font-medium">Beginner</span>
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-star text-accent text-sm"></i>
+                                <span class="text-sm text-muted-foreground">4.8 (156)</span>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-lg font-semibold text-foreground mb-2">Fundamentals of Mediation</h3>
+                        <p class="text-sm text-muted-foreground mb-4">Master the core principles and techniques of effective mediation practice.</p>
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-4 text-sm text-muted-foreground">
+                                <span><i class="fas fa-clock mr-1"></i>8 hours</span>
+                                <span><i class="fas fa-video mr-1"></i>12 lessons</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div class="text-xl font-bold text-foreground">$450</div>
+                            <button class="bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-800 transition-colors">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2: International Arbitration -->
+                <div class="bg-card rounded-xl shadow-lg border border-border overflow-hidden group hover:shadow-xl transition-shadow">
+                    <!-- International arbitration tribunal -->
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300" 
+                         alt="International arbitration advanced course" 
+                         class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" />
+                    
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-accent/10 text-accent px-2 py-1 rounded text-xs font-medium">Advanced</span>
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-star text-accent text-sm"></i>
+                                <span class="text-sm text-muted-foreground">4.9 (89)</span>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-lg font-semibold text-foreground mb-2">International Arbitration</h3>
+                        <p class="text-sm text-muted-foreground mb-4">Advanced strategies for complex cross-border commercial disputes.</p>
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-4 text-sm text-muted-foreground">
+                                <span><i class="fas fa-clock mr-1"></i>16 hours</span>
+                                <span><i class="fas fa-video mr-1"></i>24 lessons</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div class="text-xl font-bold text-foreground">$850</div>
+                            <button class="bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-800 transition-colors">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3: ADR Ethics & Standards -->
+                <div class="bg-card rounded-xl shadow-lg border border-border overflow-hidden group hover:shadow-xl transition-shadow">
+                    <!-- Professional ethics discussion -->
+                    <img src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300" 
+                         alt="ADR ethics and professional standards" 
+                         class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" />
+                    
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-medium">Intermediate</span>
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-star text-accent text-sm"></i>
+                                <span class="text-sm text-muted-foreground">4.7 (124)</span>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-lg font-semibold text-foreground mb-2">ADR Ethics & Standards</h3>
+                        <p class="text-sm text-muted-foreground mb-4">Professional conduct and ethical considerations in dispute resolution.</p>
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-4 text-sm text-muted-foreground">
+                                <span><i class="fas fa-clock mr-1"></i>6 hours</span>
+                                <span><i class="fas fa-video mr-1"></i>10 lessons</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div class="text-xl font-bold text-foreground">$350</div>
+                            <button class="bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-800 transition-colors">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All Courses Button -->
+            <div class="text-center mt-12">
+                <button class="bg-secondary text-secondary-foreground px-8 py-4 rounded-lg font-medium hover:bg-slate-600 transition-colors">
+                    View All Courses
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Course Catalog -->
+
+    <!-- @COMPONENT: Student Dashboard Preview [Learning progress and features] -->
+    <section class="py-20 bg-gradient-to-br from-muted/30 to-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-foreground">Professional Learning Dashboard</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Track your progress, manage certifications, and connect with the global ADR community.
+                </p>
+            </div>
+
+            <!-- Dashboard Preview -->
+            <div class="bg-card rounded-xl shadow-xl border border-border overflow-hidden">
+                <!-- Dashboard Header -->
+                <div class="bg-primary text-primary-foreground p-6">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center">
+                                <span class="text-accent-foreground text-xl font-bold">JD</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold">John Davis</h3>
+                                <p class="text-blue-200">Aspiring Arbitrator</p>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <i class="fas fa-map-marker-alt text-blue-300 text-sm"></i>
+                                    <span class="text-blue-200 text-sm">London, UK</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-accent">68%</div>
+                            <div class="text-blue-200 text-sm">Overall Progress</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Content -->
+                <div class="p-6">
+                    <div class="grid lg:grid-cols-3 gap-8">
+                        <!-- Current Course Progress -->
+                        <div class="lg:col-span-2 space-y-6">
+                            <h4 class="text-lg font-semibold text-foreground mb-4">Current Courses</h4>
+                            
+                            <!-- Course Progress Item -->
+                            <div class="bg-muted/30 rounded-lg p-4 border border-border">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h5 class="font-medium text-foreground">Global M&A Program</h5>
+                                    <span class="text-sm text-accent font-medium">85% Complete</span>
+                                </div>
+                                <div class="w-full bg-muted rounded-full h-2 mb-3">
+                                    <div class="bg-accent h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                                <div class="flex items-center justify-between text-sm text-muted-foreground">
+                                    <span>Module 8 of 10 completed</span>
+                                    <span>2 weeks remaining</span>
+                                </div>
+                            </div>
+
+                            <!-- Another Course -->
+                            <div class="bg-muted/30 rounded-lg p-4 border border-border">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h5 class="font-medium text-foreground">International Arbitration</h5>
+                                    <span class="text-sm text-primary font-medium">45% Complete</span>
+                                </div>
+                                <div class="w-full bg-muted rounded-full h-2 mb-3">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 45%"></div>
+                                </div>
+                                <div class="flex items-center justify-between text-sm text-muted-foreground">
+                                    <span>Module 11 of 24 completed</span>
+                                    <span>6 weeks remaining</span>
+                                </div>
+                            </div>
+
+                            <!-- Upcoming Assignment -->
+                            <div class="bg-card border border-destructive/20 rounded-lg p-4">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <i class="fas fa-exclamation-triangle text-destructive"></i>
+                                    <h5 class="font-medium text-foreground">Upcoming Assignment</h5>
+                                </div>
+                                <p class="text-sm text-muted-foreground mb-3">
+                                    Case Study Analysis: Cross-Border M&A Dispute Resolution
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-destructive font-medium">Due in 3 days</span>
+                                    <button class="bg-primary text-primary-foreground px-4 py-2 rounded text-sm font-medium">
+                                        Start Assignment
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sidebar: Achievements & Stats -->
+                        <div class="space-y-6">
+                            <!-- Certifications -->
+                            <div>
+                                <h4 class="text-lg font-semibold text-foreground mb-4">Certifications</h4>
+                                <div class="space-y-3">
+                                    <div class="flex items-center space-x-3 p-3 bg-accent/10 rounded-lg border border-accent/20">
+                                        <i class="fas fa-medal text-accent"></i>
+                                        <div>
+                                            <div class="font-medium text-foreground text-sm">Mediation Fundamentals</div>
+                                            <div class="text-xs text-muted-foreground">Completed</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-3 p-3 bg-muted/30 rounded-lg border border-border">
+                                        <i class="fas fa-clock text-muted-foreground"></i>
+                                        <div>
+                                            <div class="font-medium text-foreground text-sm">FCIMArb Fellowship</div>
+                                            <div class="text-xs text-muted-foreground">In Progress</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Learning Stats -->
+                            <div>
+                                <h4 class="text-lg font-semibold text-foreground mb-4">Learning Stats</h4>
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-muted-foreground">Hours Studied</span>
+                                        <span class="font-semibold text-foreground">127</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-muted-foreground">Courses Completed</span>
+                                        <span class="font-semibold text-foreground">3</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-muted-foreground">Global Rank</span>
+                                        <span class="font-semibold text-accent">#245</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-muted-foreground">Study Streak</span>
+                                        <span class="font-semibold text-green-600">12 days</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Community Activity -->
+                            <div>
+                                <h4 class="text-lg font-semibold text-foreground mb-4">Community</h4>
+                                <div class="space-y-3">
+                                    <div class="text-sm">
+                                        <span class="text-muted-foreground">Forum Posts:</span>
+                                        <span class="font-medium text-foreground ml-2">23</span>
+                                    </div>
+                                    <div class="text-sm">
+                                        <span class="text-muted-foreground">Q&A Answered:</span>
+                                        <span class="font-medium text-foreground ml-2">15</span>
+                                    </div>
+                                    <button class="w-full bg-secondary text-secondary-foreground py-2 rounded-lg text-sm font-medium hover:bg-slate-600 transition-colors">
+                                        View Full Profile
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Student Dashboard Preview -->
+
+    <!-- @COMPONENT: Global Community [International reach and networking] -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-foreground">Global ADR Community</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Connect with professionals worldwide and access opportunities in major international cities.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Global Reach Map -->
+                <div class="relative">
+                    <!-- World map showing global connectivity -->
+                    <img src="https://images.unsplash.com/photo-1516681100942-77d8e7f9dd97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Global network and international connections" 
+                         class="rounded-xl shadow-lg w-full" />
+                    
+                    <!-- Overlay with location markers -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-xl"></div>
+                    
+                    <!-- Location Pins -->
+                    <div class="absolute top-1/4 left-1/4 w-4 h-4 bg-accent rounded-full border-2 border-white shadow-lg animate-pulse"></div>
+                    <div class="absolute top-1/3 left-3/4 w-4 h-4 bg-primary rounded-full border-2 border-white shadow-lg animate-pulse"></div>
+                    <div class="absolute top-2/3 left-1/2 w-4 h-4 bg-secondary rounded-full border-2 border-white shadow-lg animate-pulse"></div>
+                </div>
+
+                <!-- Global Stats and Benefits -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-foreground mb-4">Worldwide Presence</h3>
+                        <p class="text-muted-foreground leading-relaxed">
+                            Join a distinguished global community with connections to prestigious international organizations in major financial and legal centers.
+                        </p>
+                    </div>
+
+                    <!-- City Presence -->
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-map-marker-alt text-accent"></i>
+                                <span class="font-medium text-foreground">London</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                                <span class="font-medium text-foreground">Accra</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-map-marker-alt text-secondary"></i>
+                                <span class="font-medium text-foreground">Singapore</span>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-map-marker-alt text-accent"></i>
+                                <span class="font-medium text-foreground">Dubai</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                                <span class="font-medium text-foreground">New York</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-map-marker-alt text-secondary"></i>
+                                <span class="font-medium text-foreground">Oxford</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Community Benefits -->
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 p-4 bg-muted/30 rounded-lg">
+                            <i class="fas fa-users text-primary text-xl"></i>
+                            <div>
+                                <div class="font-medium text-foreground">Professional Network</div>
+                                <div class="text-sm text-muted-foreground">Connect with 5,000+ ADR professionals globally</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 p-4 bg-muted/30 rounded-lg">
+                            <i class="fas fa-briefcase text-accent text-xl"></i>
+                            <div>
+                                <div class="font-medium text-foreground">Career Opportunities</div>
+                                <div class="text-sm text-muted-foreground">Access exclusive job postings and referrals</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 p-4 bg-muted/30 rounded-lg">
+                            <i class="fas fa-globe text-secondary text-xl"></i>
+                            <div>
+                                <div class="font-medium text-foreground">International Recognition</div>
+                                <div class="text-sm text-muted-foreground">Credentials recognized worldwide</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Global Community -->
+
+    <!-- @COMPONENT: Footer [Contact info and links] -->
+    <footer class="bg-card border-t border-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-balance-scale text-primary-foreground text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-primary">CIMA</h3>
+                            <p class="text-xs text-muted-foreground -mt-1">International ADR</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-muted-foreground">
+                        Center for International Mediators and Arbitrators - Leading global alternative dispute resolution education and certification.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-muted-foreground hover:text-primary transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-muted-foreground hover:text-primary transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-muted-foreground hover:text-primary transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">Learning</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors">Course Catalog</a></li>
+                        <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors">Global M&A Program</a></li>
+                        <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors">FCIMArb Fellowship</a></li>
+                        <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors">Certification</a></li>
+                        <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors">Resources</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors">Help Center</a></li>
+                        <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors">Community Forum</a></li>
+                        <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors">Technical Support</a></li>
+                        <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors">Academic Advising</a></li>
+                        <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">Contact</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt text-muted-foreground text-sm mt-1"></i>
+                            <div class="text-sm text-muted-foreground">
+                                Oxford Science Park<br>
+                                John Eccles House<br>
+                                Oxford, Oxfordshire, UK
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-muted-foreground text-sm"></i>
+                            <a href="mailto:info@thecima.org" class="text-sm text-muted-foreground hover:text-primary transition-colors">
+                                info@thecima.org
+                            </a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-globe text-muted-foreground text-sm"></i>
+                            <a href="https://thecima.org" class="text-sm text-muted-foreground hover:text-primary transition-colors">
+                                thecima.org
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-muted-foreground">
+                    © 2024 Center for International Mediators and Arbitrators. All rights reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors">Terms of Service</a>
+                    <a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        // TODO: Implement business logic, API calls, and state management
+        (function() {
+            // Course enrollment handling
+            const enrollButtons = document.querySelectorAll('button');
+            enrollButtons.forEach(button => {
+                if (button.textContent.includes('Enroll')) {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        // TODO: Implement enrollment flow with authentication check
+                        console.log('Enrollment process initiated');
+                    });
+                }
+            });
+
+            // Search functionality
+            const searchInput = document.querySelector('input[placeholder="Search courses..."]');
+            if (searchInput) {
+                searchInput.addEventListener('input', function(e) {
+                    // TODO: Implement real-time course search
+                    console.log('Searching for:', e.target.value);
+                });
+            }
+
+            // Mobile menu toggle
+            const mobileMenuButton = document.querySelector('.fa-bars').closest('button');
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', function() {
+                    // TODO: Implement mobile menu toggle
+                    console.log('Mobile menu toggle');
+                });
+            }
+
+            // Progress tracking updates
+            // TODO: Implement real-time progress updates via WebSocket or polling
+            
+            // Language selector
+            const languageSelector = document.querySelector('select');
+            if (languageSelector) {
+                languageSelector.addEventListener('change', function(e) {
+                    // TODO: Implement internationalization
+                    console.log('Language changed to:', e.target.value);
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
