@@ -4,6 +4,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import WorldMap from "@/components/world-map";
+import CIMACarousel from "@/components/cima-carousel";
 
 export default function Landing() {
   const { t } = useLanguage();
@@ -38,6 +39,7 @@ export default function Landing() {
                 <Button 
                   data-testid="button-watch-overview"
                   variant="outline"
+                  onClick={() => window.open('https://youtu.be/Y7eAsjyGaoI', '_blank')}
                   className="border-2 border-white/30 bg-white/10 text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors backdrop-blur-sm"
                 >
                   <i className="fas fa-play mr-2"></i>
@@ -62,14 +64,8 @@ export default function Landing() {
               </div>
             </div>
 
-            <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Professional arbitration meeting" 
-                className="rounded-xl shadow-2xl"
-                data-testid="img-hero"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-xl"></div>
+            <div className="relative h-96">
+              <CIMACarousel />
               
               {/* Floating Achievement Card */}
               <Card className="absolute -bottom-6 -left-6 shadow-xl border border-border relative" data-testid="card-achievement">
